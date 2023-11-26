@@ -58,6 +58,15 @@ public class Inventario {
 
         } while (a == 1);
     }
+    
+    public void agregarProducto(Alimento a1) {
+    }
+
+    public void agregarProducto(Electrodomestico e1) {
+    }
+
+    public void agregarProducto(Tecnologia t1) {
+    }
 }
 
 
