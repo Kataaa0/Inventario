@@ -1,48 +1,47 @@
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
-
 public class Main {
-    public static void main(String[] args){
-       // Producto p1= new Producto();
-       // p1.ingresarProducto();
-       // Alimento a1= new Alimento();
-       // a1.ingresarProducto();
+    public static void main(String[] args) {
+        boolean ejecutarMenu = true;
 
-        //Electrodomestico e1= new Electrodomestico();
-        //e1.ingresarProducto() ;
-//
-      //  Tecnologia t1= new Tecnologia();
-       // t1.ingresarProducto();
+        Scanner sc = new Scanner(System.in);
+        Inventario inventario = new Inventario();
 
+        do {
+            try {
+                System.out.println("Ingrese el tipo de producto que desea (1: Alimento, 2: Electrodoméstico, 3: Tecnología): ");
+                int tipoProducto = sc.nextInt();
+                sc.nextLine();
 
+                System.out.println("Ingrese el nombre del producto: ");
+                String nombreProducto = sc.nextLine();
 
+                System.out.println("Ingrese la cantidad del producto: ");
+                int cantidadProducto = sc.nextInt();
+                sc.nextLine();
 
-
-      ///  System.out.println( e1.toString());
-
-            Inventario inventario = new Inventario();
-
-            int a = 1;
-            do {
-                Scanner sc = new Scanner(System.in);
-
-                System.out.println("Ingrese el tipo de producto que desea ");
-                int producto = sc.nextInt();
-
-                switch (producto) {
+                switch (tipoProducto) {
                     case 1:
-                        Alimento a1 = new Alimento();
-                        a1.ingresarProducto();
+                        Alimento alimento = new Alimento();
+                        alimento.setNombre(nombreProducto);
+                        alimento.setCantidad(cantidadProducto);
+                        inventario.agregarProducto(alimento);
                         break;
 
                     case 2:
-                        Electrodomestico e1 = new Electrodomestico();
-                        e1.ingresarProducto();
+                        Electrodomestico electrodomestico = new Electrodomestico();
+                        electrodomestico.setNombre(nombreProducto);
+                        electrodomestico.setCantidad(cantidadProducto);
+                        inventario.agregarProducto(electrodomestico);
                         break;
 
                     case 3:
-                        Tecnologia t1 = new Tecnologia();
-                        t1.ingresarProducto();
+                        Tecnologia tecnologia = new Tecnologia();
+                        tecnologia.setNombre(nombreProducto);
+                        tecnologia.setCantidad(cantidadProducto);
+                        inventario.agregarProducto(tecnologia);
                         break;
 
                     default:
@@ -50,14 +49,22 @@ public class Main {
                         break;
                 }
 
-                sc.close();
-
-            } while (a == 1);
-        }
-
-
-
-
+                System.out.println("¿Desea ingresar otro producto? (1 para sí, 0 para no): ");
+                ejecutarMenu = (sc.nextInt() == 1);
+                sc.nextLine();
+                System.out.println("Gracias por su visita ");
+                ejecutarMenu = (sc.nextInt() == 1);
+                sc.nextLine();
 
 
-   }
+            } catch (InputMismatchException e) {
+                System.out.println("Por favor, ingrese un valor válido.");
+                sc.nextLine();
+            }
+
+        } while (ejecutarMenu);
+
+        sc.close();
+    }
+}
+           
