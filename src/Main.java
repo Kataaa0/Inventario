@@ -19,8 +19,17 @@ public class Main {
                 String nombreProducto = sc.nextLine();
 
                 System.out.println("Ingrese la cantidad del producto: ");
-                int cantidadProducto = sc.nextInt();
+                int cantidadProdu    cto = sc.nextInt();
                 sc.nextLine();
+
+                System.out.println("Ingrese el codigo del producto: ");
+                int codigoProducto = sc.nextInt();
+                sc.nextLine();
+                
+                System.out.println("Ingrese el precio  del producto: ");
+                int precioProducto = sc.nextInt();
+                sc.nextLine();
+
 
                 switch (tipoProducto) {
                     case 1:
